@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, Restaurant, Menu
+from .models import Person, Restaurant, Menu, Vote
 # Register your models here.
 
 
@@ -23,6 +23,12 @@ class MenuAdmin(admin.ModelAdmin):
     search_fields = ('_title', '_description', '_date', '_restaurant')
 
 
+class VoteAdmin(admin.ModelAdmin):
+    list_display = ('id', '_user')
+    search_fields = ('_user', '_user_id', '_menu', '_menu_id')
+
+
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Menu, MenuAdmin)
+admin.site.register(Vote, VoteAdmin)
